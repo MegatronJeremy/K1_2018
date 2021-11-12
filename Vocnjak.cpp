@@ -73,16 +73,18 @@ Vocnjak &Vocnjak::operator+=(Vocka &v) {
 }
 
 Vocnjak Vocnjak::operator++(int k) {
+    Vocnjak v = *this;
     for (int i = 0; i < r; i++) {
         for (int j = 0; j < c; j++) {
             if (orchard[i][j]) {
-                orchard[i][j]++;
-                if (!orchard[i][j]->getRemAge())
+                (*orchard[i][j])++;
+                if (!orchard[i][j]->getRemAge()) {
                     orchard[i][j] = nullptr;
+                }
             }
         }
     }
-    return *this;
+    return v;
 }
 
 double Vocnjak::getIncome() const {

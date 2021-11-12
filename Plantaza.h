@@ -10,7 +10,12 @@
 class Plantaza {
 public:
     Plantaza() = default;
-    Plantaza(Plantaza &) = delete;
+
+    Plantaza(const Plantaza &) = delete;
+
+    ~Plantaza();
+
+    Plantaza &operator=(const Plantaza &) = delete;
 
     Plantaza &operator+=(Vocnjak &v);
 
@@ -24,7 +29,7 @@ private:
         Node(Vocnjak &v, Node *p = nullptr) : orch(&v), next(p) {}
     };
 
-    Node *plantation = nullptr;
+    Node *first = nullptr;
 };
 
 
